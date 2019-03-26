@@ -22,6 +22,7 @@ public class Main {
         // TODO:read input files
         logger.info("start read input files");
 
+
         // TODO: calc
 
         // TODO: write answer.txt
