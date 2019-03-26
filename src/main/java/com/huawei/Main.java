@@ -92,10 +92,10 @@ public class Main {
             bw.write("#(carId,StartTime,RoadId……)"+"\r\n");
             String line="";
             for (Integer id:cars.keySet()) {
-                line=line+"("+id+","+cars.get(id).getStartTime()+",";
+                line=line+"("+id+","+cars.get(id).getStartTime();
                 ArrayList<Road> roads=cars.get(id).getRoute();
                 for (Road road:roads) {
-                    line=line+road.getId();
+                    line=line+","+road.getId();
                 }
                 line=line+")\r\n";
             }
