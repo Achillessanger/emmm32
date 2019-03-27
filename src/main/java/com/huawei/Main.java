@@ -87,7 +87,7 @@ public class Main {
                 if(line.charAt(0)=='#') {
                     continue;
                 }
-                String[] lines=line.split(",");
+                String[] lines=line.split(",|(|)");
                 int id=0;
                 switch (fileType) {
                     case 0:
@@ -353,6 +353,7 @@ public class Main {
     private static boolean checkCross(Cross cross){ //false=四车道第一优先级都不能动
         boolean ret = true;
 
+        return ret;
 
     }
     private static Car getPrimaryWaitingCar(Road road){
@@ -368,7 +369,9 @@ public class Main {
     }
     private static Road getNowRoad(Cross cross,Car car){
 
+        return null;
     }
+
     private static Road getNextRoad(Cross cross, Car car, Road road){
         int dir = direction(car);
         int carRoadOrder = -1;
