@@ -8,7 +8,7 @@ public class Road {
     private Cross from;
     private Cross to;
     private boolean isDuplex;
-    private int[] carsOnRoad;
+    private Car[][] carsOnRoad;
     private Road roadReverse = null;
 
     public Road(int id, int length, int speed, int channel, Cross from, Cross to, boolean isDuplex) {
@@ -19,7 +19,12 @@ public class Road {
         this.from = from;
         this.to = to;
         this.isDuplex = isDuplex;
-        this.carsOnRoad = new int[length];
+        this.carsOnRoad = new Car[channel][length];
+        for(int i = 0; i < carsOnRoad.length; i++) {
+            for (int j = 0; j < carsOnRoad.length; j++) {
+                carsOnRoad[i][j] = null;
+            }
+        }
         if(isDuplex){
             this.roadReverse = new Road(id,length,speed,channel,to,from);
             this.roadReverse.setDuplex(isDuplex);
@@ -33,15 +38,20 @@ public class Road {
         this.channel = channel;
         this.from = from;
         this.to = to;
-        this.carsOnRoad = new int[length];
+        this.carsOnRoad = new Car[channel][length];
+        for(int i = 0; i < carsOnRoad.length; i++) {
+            for (int j = 0; j < carsOnRoad.length; j++) {
+                carsOnRoad[i][j] = null;
+            }
+        }
     }
 
 
-    public int[] getCarsOnRoad() {
+    public Car[][] getCarsOnRoad() {
         return carsOnRoad;
     }
 
-    public void setCarsOnRoad(int[] carsOnRoad) {
+    public void setCarsOnRoad(Car[][] carsOnRoad) {
         this.carsOnRoad = carsOnRoad;
     }
 

@@ -17,6 +17,7 @@ public class Main {
     private static List<Integer> notFinishedCarList = new ArrayList<>();
     private static List<Integer> runningCarList = new ArrayList<>();
     private static List<Integer> roadList = new ArrayList<>();
+    private static List<Integer> carList = new ArrayList<>();
     public static void main(String[] args)
     {
         if (args.length != 4) {
@@ -41,6 +42,9 @@ public class Main {
         //init
         for(Map.Entry<Integer,Road> entry : roads.entrySet()){
             roadList.add(entry.getKey());
+        }
+        for(Map.Entry<Integer,Car> entry : cars.entrySet()){
+            carList.add(entry.getKey());
         }
         roadList.sort(new Comparator<Integer>() {
             @Override
@@ -126,10 +130,60 @@ public class Main {
     public static int judge(){
         //所有能走的车走掉并变成终止状态，不能走的变成等待状态
 
+        List<Integer> carsOnRoad = new ArrayList<>();
+        List<Car> carsWaitingList = new ArrayList<>();
         runningCarList.clear();
         int t = 0; //时间片
         while (!areAllCarsGoToTerminals()){
-            //当前时间点出发的车上路
+
+            if(carsOnRoad.size() != 0){
+                //先处理每条道路上的车辆，
+                // 将这些车辆进行遍历扫描，
+
+                for(Map.Entry<Integer,Road> entry : roads.entrySet()){
+                    for(int i = 0; i < entry.getValue().getChannel(); i++){ //车道
+                        for(int j = entry.getValue().getLength() -1; j >= 0 ; j--){ //在车道上的位置
+                            if(entry.getValue().getCarsOnRoad()[i][j] == null)
+                                continue;
+                            else {
+                                Car car = entry.getValue().getCarsOnRoad()[i][j];
+                                // 如果车在经过行驶速度（前方没有车辆阻挡）可以出路口，
+                                // 将这些车辆标记为等待行驶车辆。
+                                if(min(car.getSpeed(),entry.getValue().getSpeed()) > entry.getValue().getLength() - 1 - j) {
+                                    car.setState(1);
+                                    carsWaitingList.add(car);
+                                }
+                                /* b)车辆如果行驶过程中，前方没有阻挡并且也不会出路口（v=min(最大车速，道路限速)），
+                                则该车辆行驶可行驶的最大车速（v=min(最大车速，道路限速)），
+                                此时该车辆在本次调度确定了该时刻的终止位置。该车辆标记为终止状态。*/
+                                else if(checkIfTerminate_1st(car,entry.getValue(),i,j))
+                                    car.setState(0);
+                                /* c)车辆如果行驶过程中，发现前方有车辆阻挡，且阻挡的车辆为等待车辆，
+                                则该辆车也被标记为等待行驶车辆。（与阻挡车辆的距离s < v*t)）
+                                其中：v=min(最大车速，道路限速),t=1  */
+                                else if(checkIfWaiting_1st(car,entry.getValue(),i,j)) {
+                                    car.setState(1);
+                                    carsWaitingList.add(car);
+                                }
+                                /* d)车辆如果行驶过程中，发现前方有车辆阻挡，且阻挡的车辆为终止状态车辆，
+                                则该辆车也被标记为终止车辆。（与前方阻挡的车辆的距离记为s）
+                                则该车辆最大行驶速度为v = min(最高车速，道路限速，s/t) 其中t=1，该车辆最大可行驶距离为s。*/
+                                else if(checkIfTerminate_2st(car,entry.getValue(),i,j))
+                                    car.setState(0);
+                            }
+                        }
+                    }
+
+                }
+            }
+
+
+            //当前时间点出发的车上路or等待上路
+            for(Integer i : carList){
+                if(t == i){
+
+                }
+            }
 
         }
 
@@ -171,5 +225,39 @@ public class Main {
     }
     private static boolean areAllCarsGoToTerminals(){
         return (notFinishedCarList.size() == 0);
+    }
+    private static int min(int speed1, int speed2){
+        if(speed1 < speed2)
+            return speed1;
+        else
+            return speed2;
+    }
+    private static boolean checkIfTerminate_1st(Car car, Road road, int i, int j){
+        int speed = min(car.getSpeed(),road.getSpeed());
+        for(int k = j+1; k <= j + speed; k++){
+            if(road.getCarsOnRoad()[i][k] != null)
+                return false;
+        }
+        return true;
+    }
+    private static boolean checkIfWaiting_1st(Car car, Road road, int i, int j){
+        int speed = min(car.getSpeed(),road.getSpeed());
+        for(int k = j+1; k <= j + speed; k++){
+            if(road.getCarsOnRoad()[i][k] != null && road.getCarsOnRoad()[i][k].getState() == 1){
+                return true;
+            }
+        }
+        return false;
+    }
+    private static boolean checkIfTerminate_2st(Car car, Road road, int i, int j){
+        int speed = min(car.getSpeed(),road.getSpeed());
+        for(int k = j+1; k <= j + speed; k++){
+            if(road.getCarsOnRoad()[i][k] != null && road.getCarsOnRoad()[i][k].getState() == 0){
+                road.getCarsOnRoad()[i][j] = null;
+                road.getCarsOnRoad()[i][k - 1] = car;
+                return true;
+            }
+        }
+        return false;
     }
 }

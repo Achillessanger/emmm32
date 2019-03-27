@@ -9,7 +9,7 @@ public class Car {
     private int speed;
     private int startTime;
     private ArrayList<Road> Route;
-    private int state = 0;//0终止 1等待
+    private int state = 1;//0终止 1等待
     private int startTimeInAnswerSheet;
     private boolean isFinished = false;
 
