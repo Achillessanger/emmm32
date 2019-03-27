@@ -7,6 +7,34 @@ public class Cross {
     private int id;
     private int[] road = new int[4];
     private int[] roadSorted = new int[4];
+    //用于Dijkstra的变量
+    private int min;
+    private boolean isDealt;
+    private Cross pre;
+
+    public Cross getPre() {
+        return pre;
+    }
+
+    public void setPre(Cross pre) {
+        this.pre = pre;
+    }
+
+    public int getMin() {
+        return min;
+    }
+
+    public void setMin(int min) {
+        this.min = min;
+    }
+
+    public boolean isDealt() {
+        return isDealt;
+    }
+
+    public void setDealt(boolean dealt) {
+        isDealt = dealt;
+    }
 
     public Cross(int id, int road1, int road2, int road3, int road4) {
         this.id = id;

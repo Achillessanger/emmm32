@@ -2,6 +2,7 @@ package com.huawei;
 
 import com.huawei.bean.Car;
 import com.huawei.bean.Cross;
+import com.huawei.bean.Graph;
 import com.huawei.bean.Road;
 import com.sun.javafx.collections.MappingChange;
 import org.apache.log4j.Logger;
@@ -200,7 +201,7 @@ public class Main {
                 for(Integer crossOrder : crossList){
                     for(Integer roadId : crosses.get(crossOrder).getRoadSorted()){
                         Road currentRoad = roads.get(roadId);
-                        
+
                     }
                 }
             }
@@ -290,5 +291,59 @@ public class Main {
             }
         }
         return false;
+    }
+
+    public void Dijkstra(Cross start, Cross end, Graph graph){
+        //初始化
+        //对起点初始化
+        start.setMin(0);
+        //构造优先队列
+        Queue<Cross> queue = createPriorityQueue(start, end, graph);
+        while (!queue.isEmpty()){
+            if (end.isDealt())
+                break;
+            Cross cross = queue.poll();
+            cross.setDealt(true);
+            int[] nextRoads = cross.getRoad();
+//            for (Map.Entry<String, valuePair> entry : u.getValuePairs().entrySet()){
+//                Double time = entry.getValue().getTime();
+//                Cross v = entry.getValue().getVertex();
+//                if ((v.getMin() > u.getMin() + time) && !v.isDealt()){
+//                    v.setMin(u.getMin() + time);
+//                    v.setPre(u);
+//                    queue.remove(v);
+//                    queue.add(v);
+//                }
+//            }
+            for (int i = 0; i < nextRoads.length; i++){
+                Road road = roads.get(nextRoads[i]);
+                int time = road.getTime();
+                Cross nextCross = findNextCross(cross, road);
+                if ((nextCross.getMin() > cross.getMin() + time) && !nextCross.isDealt()){
+                    nextCross.setMin(cross.getMin() + time);
+                    nextCross.setPre(cross);
+                    queue.remove(nextCross);
+                    queue.add(nextCross);
+                }
+            }
+        }
+    }
+
+    public Cross findNextCross(Cross cross, Road road){
+        if (road.getFrom() == cross.getId()){
+            //说明road的起点即为该路口
+            return crosses.get(road.getTo());
+        }
+        return null;
+    }
+
+    public Queue<Cross> createPriorityQueue(Cross start, Cross end, Graph graph){
+        //实现优先队列
+        Queue<Cross> station = new PriorityQueue<>();
+        for (Map.Entry<Integer, Cross> entry : graph.getVertices().entrySet()){
+            Cross next = entry.getValue();
+            station.add(next);
+        }
+        return station;
     }
 }

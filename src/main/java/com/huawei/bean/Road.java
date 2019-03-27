@@ -10,6 +10,16 @@ public class Road {
     private boolean isDuplex;
     private Car[][] carsOnRoad;
     private Road roadReverse = null;
+    //用于dijkstra
+    private int time;
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
 
     public Road(int id, int length, int speed, int channel, int from, int to, boolean isDuplex) {
         this.id = id;
@@ -30,6 +40,7 @@ public class Road {
             this.roadReverse.setDuplex(isDuplex);
             this.roadReverse.roadReverse = this;
         }
+        this.time = length / speed;
     }
     public Road(int id, int length, int speed, int channel, int from, int to) {
         this.id = id;
