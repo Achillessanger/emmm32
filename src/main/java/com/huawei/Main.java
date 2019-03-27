@@ -15,9 +15,11 @@ public class Main {
     private static Map<Integer,Road> roads=new HashMap<>();
     private static Map<Integer,Cross> crosses=new HashMap<>();
     private static List<Integer> notFinishedCarList = new ArrayList<>();
-    private static List<Integer> runningCarList = new ArrayList<>();
+//    private static List<Integer> runningCarList = new ArrayList<>();
     private static List<Integer> roadList = new ArrayList<>();
     private static List<Integer> carList = new ArrayList<>();
+    private static List<Integer> crossList = new ArrayList<>();
+
     public static void main(String[] args)
     {
         if (args.length != 4) {
@@ -55,6 +57,16 @@ public class Main {
         for(Map.Entry<Integer,Car> entry : cars.entrySet()){
             notFinishedCarList.add(entry.getKey());
         }
+        for(Map.Entry<Integer,Cross> entry : crosses.entrySet()){
+            crossList.add(entry.getKey());
+        }
+        crossList.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+            }
+        });
+
 
 
         // TODO: calc
@@ -130,62 +142,81 @@ public class Main {
     public static int judge(){
         //所有能走的车走掉并变成终止状态，不能走的变成等待状态
 
-        List<Integer> carsOnRoad = new ArrayList<>();
+//        List<Integer> carsOnRoad = new ArrayList<>();
         List<Car> carsWaitingList = new ArrayList<>();
-        runningCarList.clear();
+//        runningCarList.clear();
         int t = 0; //时间片
         while (!areAllCarsGoToTerminals()){
 
-            if(carsOnRoad.size() != 0){
+
                 //先处理每条道路上的车辆，
                 // 将这些车辆进行遍历扫描，
 
-                for(Map.Entry<Integer,Road> entry : roads.entrySet()){
-                    for(int i = 0; i < entry.getValue().getChannel(); i++){ //车道
-                        for(int j = entry.getValue().getLength() -1; j >= 0 ; j--){ //在车道上的位置
-                            if(entry.getValue().getCarsOnRoad()[i][j] == null)
-                                continue;
-                            else {
-                                Car car = entry.getValue().getCarsOnRoad()[i][j];
-                                // 如果车在经过行驶速度（前方没有车辆阻挡）可以出路口，
-                                // 将这些车辆标记为等待行驶车辆。
-                                if(min(car.getSpeed(),entry.getValue().getSpeed()) > entry.getValue().getLength() - 1 - j) {
-                                    car.setState(1);
-                                    carsWaitingList.add(car);
-                                }
+            for(Map.Entry<Integer,Road> entry : roads.entrySet()){
+                for(int i = 0; i < entry.getValue().getChannel(); i++){ //车道
+                    for(int j = entry.getValue().getLength() -1; j >= 0 ; j--){ //在车道上的位置
+                        if(entry.getValue().getCarsOnRoad()[i][j] == null)
+                            continue;
+                        else {
+                            Car car = entry.getValue().getCarsOnRoad()[i][j];
+                            // 如果车在经过行驶速度（前方没有车辆阻挡）可以出路口，
+                            // 将这些车辆标记为等待行驶车辆。
+                            if(min(car.getSpeed(),entry.getValue().getSpeed()) > entry.getValue().getLength() - 1 - j) {
+                                car.setState(1);
+                                carsWaitingList.add(car);
+                            }
                                 /* b)车辆如果行驶过程中，前方没有阻挡并且也不会出路口（v=min(最大车速，道路限速)），
                                 则该车辆行驶可行驶的最大车速（v=min(最大车速，道路限速)），
                                 此时该车辆在本次调度确定了该时刻的终止位置。该车辆标记为终止状态。*/
-                                else if(checkIfTerminate_1st(car,entry.getValue(),i,j))
-                                    car.setState(0);
+                            else if(checkIfTerminate_1st(car,entry.getValue(),i,j))
+                                car.setState(0);
                                 /* c)车辆如果行驶过程中，发现前方有车辆阻挡，且阻挡的车辆为等待车辆，
                                 则该辆车也被标记为等待行驶车辆。（与阻挡车辆的距离s < v*t)）
                                 其中：v=min(最大车速，道路限速),t=1  */
-                                else if(checkIfWaiting_1st(car,entry.getValue(),i,j)) {
-                                    car.setState(1);
-                                    carsWaitingList.add(car);
-                                }
+                            else if(checkIfWaiting_1st(car,entry.getValue(),i,j)) {
+                                car.setState(1);
+                                carsWaitingList.add(car);
+                            }
                                 /* d)车辆如果行驶过程中，发现前方有车辆阻挡，且阻挡的车辆为终止状态车辆，
                                 则该辆车也被标记为终止车辆。（与前方阻挡的车辆的距离记为s）
                                 则该车辆最大行驶速度为v = min(最高车速，道路限速，s/t) 其中t=1，该车辆最大可行驶距离为s。*/
-                                else if(checkIfTerminate_2st(car,entry.getValue(),i,j))
-                                    car.setState(0);
-                            }
+                            else if(checkIfTerminate_2st(car,entry.getValue(),i,j))
+                                car.setState(0);
                         }
                     }
+                }
+            }
+//            carsWaitingList.sort(new Comparator<Car>() {
+//                @Override
+//                public int compare(Car o1, Car o2) {
+//                    return o1.getId() - o2.getId();
+//                }
+//            });
 
+
+            while (carsWaitingList.size() != 0){//直到所有车终止才停止调度
+                //处理所有路口、道路中处于等待状态的车辆，等待车辆的调度顺序按7、8、9进行调度
+                /* 7.整个系统调度按路口ID升序进行调度各个路口，路口内各道路按道路ID升序进行调度。每个路口遍历道路时，只调度该道路出路口的方向。*/
+                for(Integer crossOrder : crossList){
+                    for(Integer roadId : crosses.get(crossOrder).getRoadSorted()){
+                        Road currentRoad = roads.get(roadId);
+                        
+                    }
                 }
             }
 
-
-            //当前时间点出发的车上路or等待上路
-            for(Integer i : carList){
-                if(t == i){
-
-                }
-            }
 
         }
+
+
+        //当前时间点出发的车上路or等待上路
+        for(Integer i : carList){
+            if(t == i){
+
+            }
+        }
+
+
 
         for(/* 按时间片处理 */) {
             while(/* all car in road run into end state */){

@@ -1,18 +1,20 @@
 package com.huawei.bean;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Cross {
     private int id;
-    private Road road1;
-    private Road road2;
-    private Road road3;
-    private Road road4;
+    private int[] road = new int[4];
+    private int[] roadSorted = new int[4];
 
-    public Cross(int id, Road road1, Road road2, Road road3, Road road4) {
+    public Cross(int id, int road1, int road2, int road3, int road4) {
         this.id = id;
-        this.road1 = road1;
-        this.road2 = road2;
-        this.road3 = road3;
-        this.road4 = road4;
+        this.road[0] = this.roadSorted[0] = road1;
+        this.road[1] = this.roadSorted[1] = road2;
+        this.road[2] = this.roadSorted[2] = road3;
+        this.road[3] = this.roadSorted[3] = road4;
+        Arrays.sort(roadSorted);
     }
 
     public int getId() {
@@ -23,35 +25,16 @@ public class Cross {
         this.id = id;
     }
 
-    public Road getRoad1() {
-        return road1;
+    public int[] getRoad() {
+        return road;
     }
 
-    public void setRoad1(Road road1) {
-        this.road1 = road1;
+    public void setRoad(int[] road) {
+        this.road = road;
     }
 
-    public Road getRoad2() {
-        return road2;
+    public int[] getRoadSorted() {
+        return roadSorted;
     }
 
-    public void setRoad2(Road road2) {
-        this.road2 = road2;
-    }
-
-    public Road getRoad3() {
-        return road3;
-    }
-
-    public void setRoad3(Road road3) {
-        this.road3 = road3;
-    }
-
-    public Road getRoad4() {
-        return road4;
-    }
-
-    public void setRoad4(Road road4) {
-        this.road4 = road4;
-    }
 }
