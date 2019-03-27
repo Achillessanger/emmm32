@@ -100,14 +100,14 @@ public class Main {
                         id=Integer.parseInt(lines[0]);
                         roads.put(id,new Road(id,Integer.parseInt(lines[1]),
                                 Integer.parseInt(lines[2]),Integer.parseInt(lines[3]),
-                                crosses.get(Integer.parseInt(lines[4])),crosses.get(Integer.parseInt(lines[5])),
+                                Integer.parseInt(lines[4]),Integer.parseInt(lines[5]),
                                 ("1".equals(lines[6]))));
                         break;
                     case 2:
                         id=Integer.parseInt(lines[0]);
-                        crosses.put(id,new Cross(id,roads.get(Integer.parseInt(lines[1])),
-                                roads.get(Integer.parseInt(lines[2])),roads.get(Integer.parseInt(lines[3])),
-                                roads.get(Integer.parseInt(lines[4]))));
+                        crosses.put(id,new Cross(id,Integer.parseInt(lines[1]),
+                                Integer.parseInt(lines[2]),Integer.parseInt(lines[3]),
+                                Integer.parseInt(lines[4])));
                         break;
                     default:
                         break;
