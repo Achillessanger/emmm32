@@ -4,8 +4,6 @@
     <list default="true" id="38c195c4-4a07-451a-870d-b1c3bdf95c2f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/huawei/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/huawei/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/huawei/bean/Cross.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/huawei/bean/Cross.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/huawei/bean/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/huawei/bean/Road.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="202" column="24" selection-start-line="202" selection-start-column="24" selection-end-line="202" selection-end-column="24" />
+            <state relative-caret-position="470">
+              <caret line="213" lean-forward="true" selection-start-line="213" selection-end-line="213" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1884#1885#0" expanded="true" />
@@ -38,7 +36,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/bean/Road.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
+            <state relative-caret-position="970">
               <caret line="66" column="22" lean-forward="true" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
               <folding>
                 <element signature="e#1555#1556#0" expanded="true" />
@@ -131,8 +129,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="299" />
-    <option name="y" value="63" />
+    <option name="x" value="154" />
+    <option name="y" value="42" />
     <option name="width" value="1400" />
     <option name="height" value="956" />
   </component>
@@ -192,7 +190,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553675529344" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553678086314" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -234,14 +232,21 @@
       <option name="project" value="LOCAL" />
       <updated>1553666395881</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="判题器第一步">
+      <created>1553677067837</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1553677067837</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21152000" />
+    <option name="totallyTimeSpent" value="22234000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="299" y="63" width="1400" height="956" extended-state="0" />
+    <frame x="154" y="42" width="1400" height="956" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25277162" />
@@ -279,7 +284,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="加了双向路" />
     <MESSAGE value="加了最开始的判断车辆状态" />
-    <option name="LAST_COMMIT_MESSAGE" value="加了最开始的判断车辆状态" />
+    <MESSAGE value="判题器第一步" />
+    <option name="LAST_COMMIT_MESSAGE" value="判题器第一步" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/bean/Channel.java">
@@ -289,28 +295,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/bean/Car.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-          <folding>
-            <element signature="e#638#639#0" expanded="true" />
-            <element signature="e#671#672#0" expanded="true" />
-            <element signature="e#720#721#0" expanded="true" />
-            <element signature="e#757#758#0" expanded="true" />
-            <element signature="e#552#553#0" expanded="true" />
-            <element signature="e#580#581#0" expanded="true" />
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#653#654#0" expanded="true" />
-            <element signature="e#739#740#0" expanded="true" />
-            <element signature="e#784#785#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/bean/Road.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
+        <state relative-caret-position="970">
           <caret line="66" column="22" lean-forward="true" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
           <folding>
             <element signature="e#1555#1556#0" expanded="true" />
@@ -339,6 +326,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/bean/Car.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+          <folding>
+            <element signature="e#638#639#0" expanded="true" />
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#757#758#0" expanded="true" />
+            <element signature="e#552#553#0" expanded="true" />
+            <element signature="e#580#581#0" expanded="true" />
+            <element signature="e#619#620#0" expanded="true" />
+            <element signature="e#653#654#0" expanded="true" />
+            <element signature="e#739#740#0" expanded="true" />
+            <element signature="e#784#785#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/bean/Cross.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -357,8 +363,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="202" column="24" selection-start-line="202" selection-start-column="24" selection-end-line="202" selection-end-column="24" />
+        <state relative-caret-position="470">
+          <caret line="213" lean-forward="true" selection-start-line="213" selection-end-line="213" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1884#1885#0" expanded="true" />

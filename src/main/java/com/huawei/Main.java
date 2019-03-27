@@ -198,10 +198,35 @@ public class Main {
                 //处理所有路口、道路中处于等待状态的车辆，等待车辆的调度顺序按7、8、9进行调度
                 /* 7.整个系统调度按路口ID升序进行调度各个路口，路口内各道路按道路ID升序进行调度。每个路口遍历道路时，只调度该道路出路口的方向。*/
                 for(Integer crossOrder : crossList){
+                    List<Car> carsWaitingInCrossList = new ArrayList<>();
                     for(Integer roadId : crosses.get(crossOrder).getRoadSorted()){
+                        if(roadId == -1)
+                            continue;
                         Road currentRoad = roads.get(roadId);
-                        
+                        for(int i = 0; i < currentRoad.getChannel(); i++){
+                            for(int j = 0; j < currentRoad.getLength(); j++){
+                                if(currentRoad.getCarsOnRoad()[i][j] != null && currentRoad.getCarsOnRoad()[i][j].getState() == 1){
+                                    carsWaitingInCrossList.add(currentRoad.getCarsOnRoad()[i][j]);
+                                }
+                            }
+                        }
                     }
+
+                    while (carsWaitingInCrossList.size() != 0){
+                        for(Integer roadId : crosses.get(crossOrder).getRoadSorted()){
+                            if(roadId == -1)
+                                continue;
+                            Road currentRoad = roads.get(roadId);
+                            for(int j = currentRoad.getLength() - 1; j >= 0; j--){
+                                for(int i = 0; i < currentRoad.getChannel(); i++){
+
+                                }
+                            }
+
+
+                        }
+                    }
+
                 }
             }
 
