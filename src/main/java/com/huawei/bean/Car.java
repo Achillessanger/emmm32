@@ -9,6 +9,9 @@ public class Car {
     private int speed;
     private int startTime;
     private ArrayList<Road> Route;
+    private int state = 0;//0终止 1等待
+    private int startTimeInAnswerSheet;
+    private boolean isFinished = false;
 
     public Car(int id, Cross from, Cross to, int speed, int startTime) {
         this.id = id;
@@ -17,6 +20,30 @@ public class Car {
         this.speed = speed;
         this.startTime = startTime;
         Route = new ArrayList<>();
+    }
+
+    public boolean isFinished() {
+        return isFinished;
+    }
+
+    public void setFinished(boolean finished) {
+        isFinished = finished;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
+    public int getStartTimeInAnswerSheet() {
+        return startTimeInAnswerSheet;
+    }
+
+    public void setStartTimeInAnswerSheet(int startTimeInAnswerSheet) {
+        this.startTimeInAnswerSheet = startTimeInAnswerSheet;
     }
 
     public void addRoad(Road road){

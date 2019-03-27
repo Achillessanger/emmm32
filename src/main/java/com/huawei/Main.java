@@ -14,6 +14,9 @@ public class Main {
     private static Map<Integer,Car> cars=new HashMap<>();
     private static Map<Integer,Road> roads=new HashMap<>();
     private static Map<Integer,Cross> crosses=new HashMap<>();
+    private static List<Integer> notFinishedCarList = new ArrayList<>();
+    private static List<Integer> runningCarList = new ArrayList<>();
+    private static List<Integer> roadList = new ArrayList<>();
     public static void main(String[] args)
     {
         if (args.length != 4) {
@@ -34,6 +37,22 @@ public class Main {
         readFiles(roadPath,1);
         readFiles(crossPath,2);
         readFiles(carPath,0);
+
+        //init
+        for(Map.Entry<Integer,Road> entry : roads.entrySet()){
+            roadList.add(entry.getKey());
+        }
+        roadList.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2; //正序
+            }
+        });
+        for(Map.Entry<Integer,Car> entry : cars.entrySet()){
+            notFinishedCarList.add(entry.getKey());
+        }
+
+
         // TODO: calc
 
         // TODO: write answer.txt
@@ -105,16 +124,15 @@ public class Main {
     }
 
     public static int judge(){
-        List<Map.Entry<Integer,Road>> roadList = new ArrayList<>();
-        for(Map.Entry<Integer,Road> entry : roads.entrySet()){
-            roadList.add(entry);
+        //所有能走的车走掉并变成终止状态，不能走的变成等待状态
+
+        runningCarList.clear();
+        int t = 0; //时间片
+        while (!areAllCarsGoToTerminals()){
+            //当前时间点出发的车上路
+
         }
-        roadList.sort(new Comparator<Map.Entry<Integer, Road>>() {
-            @Override
-            public int compare(Map.Entry<Integer, Road> o1, Map.Entry<Integer, Road> o2) {
-                return o1.getKey() - o2.getKey();//正序
-            }
-        });
+
         for(/* 按时间片处理 */) {
             while(/* all car in road run into end state */){
                 foreach(roads) {
@@ -150,5 +168,8 @@ public class Main {
             driveCarInGarage();
         }
 
+    }
+    private static boolean areAllCarsGoToTerminals(){
+        return (notFinishedCarList.size() == 0);
     }
 }

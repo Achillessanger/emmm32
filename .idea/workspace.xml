@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38c195c4-4a07-451a-870d-b1c3bdf95c2f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/huawei/bean/Channel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/huawei/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/huawei/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/huawei/bean/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/huawei/bean/Road.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/huawei/bean/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/huawei/bean/Car.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,37 +15,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="33" column="14" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+            <state relative-caret-position="360">
+              <caret line="131" column="25" selection-start-line="131" selection-start-column="25" selection-end-line="131" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1578#1579#0" expanded="true" />
+                <element signature="e#1627#1628#0" expanded="true" />
+                <element signature="e#6030#6031#0" expanded="true" />
+                <element signature="e#6058#6059#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/bean/Channel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="24" lean-forward="true" selection-start-column="24" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/bean/Road.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="311">
+              <caret line="24" column="49" lean-forward="true" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
               <folding>
                 <element signature="e#624#625#0" expanded="true" />
                 <element signature="e#657#658#0" expanded="true" />
                 <element signature="e#708#709#0" expanded="true" />
                 <element signature="e#752#753#0" expanded="true" />
+                <element signature="e#2092#2093#0" expanded="true" />
+                <element signature="e#2125#2126#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,8 +60,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/bean/Car.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+            <state relative-caret-position="360">
+              <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+              <folding>
+                <element signature="e#671#672#0" expanded="true" />
+                <element signature="e#720#721#0" expanded="true" />
+                <element signature="e#757#758#0" expanded="true" />
+                <element signature="e#552#553#0" expanded="true" />
+                <element signature="e#580#581#0" expanded="true" />
+                <element signature="e#619#620#0" expanded="true" />
+                <element signature="e#653#654#0" expanded="true" />
+                <element signature="e#739#740#0" expanded="true" />
+                <element signature="e#784#785#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -86,16 +93,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/huawei/bean/Cross.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/huawei/bean/Car.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/huawei/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/huawei/bean/Channel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/huawei/bean/Road.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/huawei/bean/Car.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/huawei/Main.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="403" />
-    <option name="y" value="63" />
+    <option name="x" value="447" />
+    <option name="y" value="76" />
     <option name="width" value="1400" />
     <option name="height" value="956" />
   </component>
@@ -155,7 +162,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553660312658" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553661484580" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -183,13 +190,22 @@
       <workItem from="1553580833074" duration="2163000" />
       <workItem from="1553594426598" duration="3463000" />
     </task>
+    <task id="LOCAL-00001" summary="加了双向路">
+      <created>1553660371701</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1553660371702</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11159000" />
+    <option name="totallyTimeSpent" value="12442000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="55" y="56" width="1400" height="956" extended-state="0" />
+    <frame x="447" y="76" width="1400" height="956" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25277162" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -223,28 +239,15 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="加了双向路" />
+    <option name="LAST_COMMIT_MESSAGE" value="加了双向路" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/bean/Car.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/bean/Cross.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="74" selection-start-line="9" selection-start-column="74" selection-end-line="9" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="33" column="14" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -257,13 +260,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/bean/Road.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="311">
+          <caret line="24" column="49" lean-forward="true" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
           <folding>
             <element signature="e#624#625#0" expanded="true" />
             <element signature="e#657#658#0" expanded="true" />
             <element signature="e#708#709#0" expanded="true" />
             <element signature="e#752#753#0" expanded="true" />
+            <element signature="e#2092#2093#0" expanded="true" />
+            <element signature="e#2125#2126#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/bean/Car.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+          <folding>
+            <element signature="e#671#672#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#757#758#0" expanded="true" />
+            <element signature="e#552#553#0" expanded="true" />
+            <element signature="e#580#581#0" expanded="true" />
+            <element signature="e#619#620#0" expanded="true" />
+            <element signature="e#653#654#0" expanded="true" />
+            <element signature="e#739#740#0" expanded="true" />
+            <element signature="e#784#785#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/huawei/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="131" column="25" selection-start-line="131" selection-start-column="25" selection-end-line="131" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1578#1579#0" expanded="true" />
+            <element signature="e#1627#1628#0" expanded="true" />
+            <element signature="e#6030#6031#0" expanded="true" />
+            <element signature="e#6058#6059#0" expanded="true" />
           </folding>
         </state>
       </provider>
