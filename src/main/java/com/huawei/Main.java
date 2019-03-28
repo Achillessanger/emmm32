@@ -91,7 +91,8 @@ public class Main {
                 if(line.charAt(0)=='#') {
                     continue;
                 }
-                String[] lines=line.split(",|(|)");
+                line=String.copyValueOf(line.toCharArray(),1,line.length()-2);
+                String[] lines=line.split(",");
                 int id=0;
                 switch (fileType) {
                     case 0:
