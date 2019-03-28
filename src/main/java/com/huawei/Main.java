@@ -123,7 +123,7 @@ public class Main {
                 }
             }
         } catch (Exception e) {
-            logger.info(e.getMessage());
+            logger.info(e.getStackTrace());
         }
 
     }
