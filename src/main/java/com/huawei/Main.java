@@ -93,6 +93,9 @@ public class Main {
                 }
                 line=String.copyValueOf(line.toCharArray(),1,line.length()-2);
                 String[] lines=line.split(",");
+                for (int i = 0; i <lines.length ; i++) {
+                    lines[i]=lines[i].trim();
+                }
                 int id=0;
                 switch (fileType) {
                     case 0:
