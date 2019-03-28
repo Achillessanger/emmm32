@@ -19,6 +19,7 @@ public class Main {
     private static List<Integer> roadList = new ArrayList<>();
     private static List<Integer> carList = new ArrayList<>();
     private static List<Integer> crossList = new ArrayList<>();
+    private static int systemTime = 1;
 
     public static void main(String[] args)
     {
@@ -488,6 +489,9 @@ public class Main {
         Cross start = crosses.get(car.getFrom());
         Cross end = crosses.get(car.getTo());
         Dijkstra(start, end);
+        int time = start.getMin();
+        car.setStartTimeInAnswerSheet(systemTime);
+        systemTime = systemTime + time;
 
         ArrayList<Road> route = car.getRoute();
         while (true){
