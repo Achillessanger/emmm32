@@ -70,6 +70,9 @@ public class Main {
 
 
         // TODO: calc
+        for (Map.Entry<Integer, Car> entry : cars.entrySet()){
+            planRoute(entry.getValue());
+        }
 
         // TODO: write answer.txt
         logger.info("Start write output file");
@@ -479,5 +482,80 @@ public class Main {
                 return false;
         }
         return true;
+    }
+
+    public static void planRoute(Car car){
+        Cross start = crosses.get(car.getFrom());
+        Cross end = crosses.get(car.getTo());
+        Dijkstra(start, end);
+
+        ArrayList<Road> route = car.getRoute();
+        while (true){
+            for (int i = 0; i < end.getRoad().length; i++){
+                Road road = roads.get(end.getRoad()[i]);
+                if (road.getTo() == end.getId()
+                        && road.getFrom() == end.getPre().getId()){
+                    route.add(0, road);
+                }
+            }
+            if (end.getPre() == null){
+                break;
+            }
+            end = end.getPre();
+        }
+    }
+
+    public static void Dijkstra(Cross start, Cross end){
+        //初始化
+        //对起点初始化
+        start.setMin(0);
+        //构造优先队列
+        Queue<Cross> queue = createPriorityQueue();
+        while (!queue.isEmpty()){
+            if (end.isDealt())
+                break;
+            Cross cross = queue.poll();
+            cross.setDealt(true);
+            int[] nextRoads = cross.getRoad();
+//            for (Map.Entry<String, valuePair> entry : u.getValuePairs().entrySet()){
+//                Double time = entry.getValue().getTime();
+//                Cross v = entry.getValue().getVertex();
+//                if ((v.getMin() > u.getMin() + time) && !v.isDealt()){
+//                    v.setMin(u.getMin() + time);
+//                    v.setPre(u);
+//                    queue.remove(v);
+//                    queue.add(v);
+//                }
+//            }
+            for (int i = 0; i < nextRoads.length; i++){
+                Road road = roads.get(nextRoads[i]);
+                int time = road.getTime();
+                Cross nextCross = findNextCross(cross, road);
+                if ((nextCross.getMin() > cross.getMin() + time) && !nextCross.isDealt()){
+                    nextCross.setMin(cross.getMin() + time);
+                    nextCross.setPre(cross);
+                    queue.remove(nextCross);
+                    queue.add(nextCross);
+                }
+            }
+        }
+    }
+
+    public static Cross findNextCross(Cross cross, Road road){
+        if (road.getFrom() == cross.getId()){
+            //说明road的起点即为该路口
+            return crosses.get(road.getTo());
+        }
+        return null;
+    }
+
+    public static Queue<Cross> createPriorityQueue(){
+        //实现优先队列
+        Queue<Cross> station = new PriorityQueue<>();
+        for (Map.Entry<Integer, Cross> entry : crosses.entrySet()){
+            Cross next = entry.getValue();
+            station.add(next);
+        }
+        return station;
     }
 }
