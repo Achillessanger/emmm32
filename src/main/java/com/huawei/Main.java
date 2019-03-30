@@ -490,8 +490,8 @@ public class Main {
     }
 
     public static void planRoute(Car car){
-        Cross start = crosses.get(car.getFrom());
-        Cross end = crosses.get(car.getTo());
+        Cross start = crosses.get(car.getFrom().getId());
+        Cross end = crosses.get(car.getTo().getId());
         Dijkstra(start, end);
         int time = start.getMin();
         car.setStartTimeInAnswerSheet(systemTime);
@@ -525,16 +525,6 @@ public class Main {
             Cross cross = queue.poll();
             cross.setDealt(true);
             int[] nextRoads = cross.getRoad();
-//            for (Map.Entry<String, valuePair> entry : u.getValuePairs().entrySet()){
-//                Double time = entry.getValue().getTime();
-//                Cross v = entry.getValue().getVertex();
-//                if ((v.getMin() > u.getMin() + time) && !v.isDealt()){
-//                    v.setMin(u.getMin() + time);
-//                    v.setPre(u);
-//                    queue.remove(v);
-//                    queue.add(v);
-//                }
-//            }
             for (int i = 0; i < nextRoads.length; i++){
                 Road road = roads.get(nextRoads[i]);
                 int time = road.getTime();

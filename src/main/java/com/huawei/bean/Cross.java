@@ -3,7 +3,7 @@ package com.huawei.bean;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class Cross {
+public class Cross implements Comparable<Cross>{
     private int id;
     private int[] road = new int[4];
     private int[] roadSorted = new int[4];
@@ -65,4 +65,13 @@ public class Cross {
         return roadSorted;
     }
 
+    @Override
+    public int compareTo(Cross o) {
+        if (this.min > o.min)
+            return 1;
+        else if (this.min == o.min)
+            return 0;
+        else
+            return -1;
+    }
 }
