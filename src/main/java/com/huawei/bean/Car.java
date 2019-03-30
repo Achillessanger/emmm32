@@ -2,14 +2,14 @@ package com.huawei.bean;
 
 import java.util.ArrayList;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private int id;
-    private Cross from;//始发地和目的地似乎都是路口
+    private Cross from;
     private Cross to;
     private int speed;
     private int startTime;
     private ArrayList<Road> Route;
-    private int state = 1;//0终止 1等待
+    private int state = 1;
     private int startTimeInAnswerSheet;
     private boolean isFinished = false;
 
@@ -20,6 +20,10 @@ public class Car {
         this.speed = speed;
         this.startTime = startTime;
         Route = new ArrayList<>();
+    }
+    @Override
+    public int compareTo(Car car) {
+        return (id-car.getId());
     }
 
     public boolean isFinished() {

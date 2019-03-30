@@ -1,14 +1,13 @@
 package com.huawei.bean;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class Cross implements Comparable<Cross>{
+public class Cross implements Comparable<Cross> {
     private int id;
     private int[] road = new int[4];
     private int[] roadSorted = new int[4];
     //用于Dijkstra的变量
-    private int min;
+    private int min=2147483647;
     private boolean isDealt;
     private Cross pre;
 

@@ -134,7 +134,7 @@ public class Main {
             bw.write("#(carId,StartTime,RoadId……)"+"\r\n");
             String line="";
             for (Integer id:cars.keySet()) {
-                line=line+"("+id+","+cars.get(id).getStartTime();
+                line=line+"("+id+","+cars.get(id).getStartTimeInAnswerSheet();
                 ArrayList<Road> roads=cars.get(id).getRoute();
                 for (Road road:roads) {
                     line=line+","+road.getId();
@@ -142,6 +142,7 @@ public class Main {
                 line=line+")\r\n";
             }
             bw.write(line);
+            bw.close();
         } catch (Exception e) {
             logger.info(e.getMessage());
         }
@@ -501,8 +502,14 @@ public class Main {
         while (true){
             for (int i = 0; i < end.getRoad().length; i++){
                 Road road = roads.get(end.getRoad()[i]);
+                if(road==null) {continue;}
+                //方向正确路口正确
                 if (road.getTo() == end.getId()
-                        && road.getFrom() == end.getPre().getId()){
+                        && (end.getPre()!=null)&&road.getFrom() == end.getPre().getId()){
+                    route.add(0, road);
+                }
+                //路口正确且是双向的
+                if(road.getFrom()==end.getId()&&(end.getPre()!=null)&&(road.getTo()==end.getPre().getId())&&road.isDuplex()) {
                     route.add(0, road);
                 }
             }
@@ -525,11 +532,23 @@ public class Main {
             Cross cross = queue.poll();
             cross.setDealt(true);
             int[] nextRoads = cross.getRoad();
+//            for (Map.Entry<String, valuePair> entry : u.getValuePairs().entrySet()){
+//                Double time = entry.getValue().getTime();
+//                Cross v = entry.getValue().getVertex();
+//                if ((v.getMin() > u.getMin() + time) && !v.isDealt()){
+//                    v.setMin(u.getMin() + time);
+//                    v.setPre(u);
+//                    queue.remove(v);
+//                    queue.add(v);
+//                }
+//            }
             for (int i = 0; i < nextRoads.length; i++){
                 Road road = roads.get(nextRoads[i]);
+                if(road==null) {continue;}
                 int time = road.getTime();
                 Cross nextCross = findNextCross(cross, road);
-                if ((nextCross.getMin() > cross.getMin() + time) && !nextCross.isDealt()){
+                if(nextCross==null) {continue;}
+                if ((nextCross.getMin() > (cross.getMin() + time)) && !nextCross.isDealt()){
                     nextCross.setMin(cross.getMin() + time);
                     nextCross.setPre(cross);
                     queue.remove(nextCross);
@@ -543,6 +562,9 @@ public class Main {
         if (road.getFrom() == cross.getId()){
             //说明road的起点即为该路口
             return crosses.get(road.getTo());
+        }
+        if(road.getTo()==cross.getId()&&road.isDuplex()) {
+            return crosses.get(road.getFrom());
         }
         return null;
     }
